@@ -1,10 +1,10 @@
+import SearchBar from "../components/SearchBar.jsx"
 
-
-function Home(){
+function Home({setQuery}){
     return(
-        <>
-            <h1>home</h1>
-        </>
+        <div className="home-container">
+            <SearchBar setQuery={setQuery} />
+        </div>
     )
 }
 export default Home

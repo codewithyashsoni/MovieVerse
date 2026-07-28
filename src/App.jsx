@@ -4,13 +4,14 @@ import NavBar from "./components/NavBar.jsx"
 
 function App() {
   const [phase, setPhase] = useState("home");
+  const [query, setQuery] = useState("");
 
   return (
     <>
     <NavBar setPhase={setPhase} />
 
     <div className="container">
-      {phase === "home" && <Home/>}
+      {phase === "home" && <Home setQuery={setQuery}/>}
     </div></>
     
   )
