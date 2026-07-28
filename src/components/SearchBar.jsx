@@ -4,7 +4,7 @@ function SearchBar({setQuery}){
     const [input, setInput] = useState("");
 
     useEffect(() => {
-        if(input.trim().length < 2) return;
+        if(input.trim().length < 3) return;
         const timeoutID = setTimeout(() => {
             sendQuery(input)
         }, 1000)
