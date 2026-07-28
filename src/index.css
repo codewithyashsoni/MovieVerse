@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --bg: linear-gradient(
+        135deg,
+        #0b0b0b 0%,
+        #111111 45%,
+        #181818 100%
+    );
+    --bg-secondary: #121212;
+    --surface: #191919;
+    --surface-light: #232323;
+    --card-bg: #202020;
+    --modal-bg: #181818;
+    --footer-bg: #101010;
+    --navbar-bg: rgba(13, 13, 13, 0.92);
+
+    --primary: #d4af37;
+    --primary-hover: #e8c547;
+    --primary-active: #c49b1f;
+    --primary-light: #f5de7a;
+
+    --accent: #f59e0b;
+
+    --rating: #ffd700;
+
+    --favorite: #ef4444;
+    --favorite-hover: #dc2626;
+
+    --success: #22c55e;
+
+    --warning: #f59e0b;
+
+    --danger: #ef4444;
+
+    --link: #d4af37;
+    --link-hover: #e8c547;
+
+    --text-primary: #f8f8f8;
+    --text-secondary: #d4d4d4;
+    --text-muted: #9ca3af;
+    --text-disabled: #6b7280;
+    --text-gold: #d4af37;
+
+    --border: #2f2f2f;
+    --border-light: #444444;
+    --border-focus: #d4af37;
+
+    --input-bg: #181818;
+    --input-hover: #202020;
+    --input-focus: #232323;
+    --input-border: #3b3b3b;
+    --input-placeholder: #8a8a8a;
+
+    --btn-bg: linear-gradient(
+        135deg,
+        #d4af37,
+        #e8c547
+    );
+    --btn-hover: linear-gradient(
+        135deg,
+        #e8c547,
+        #f4d76a
+    );
+    --btn-active: #c49b1f;
+
+    --btn-text: #111111;
+
+    --btn-secondary-bg: #262626;
+    --btn-secondary-hover: #303030;
+    --btn-secondary-text: #f5f5f5;
+
+    --movie-card-bg: #1b1b1b;
+    --movie-card-hover: #242424;
+
+    --movie-card-border: #323232;
+
+    --poster-bg: #111111;
+
+    --dropdown-bg: #1b1b1b;
+    --dropdown-hover: #2a2a2a;
+
+    --scroll-track: #151515;
+    --scroll-thumb: #4b4b4b;
+    --scroll-thumb-hover: #d4af37;
+
+    --shadow-xs: 0 2px 5px rgba(0,0,0,.18);
+    --shadow-sm: 0 4px 10px rgba(0,0,0,.22);
+    --shadow-md: 0 8px 20px rgba(0,0,0,.28);
+    --shadow-lg: 0 14px 35px rgba(0,0,0,.35);
+    --shadow-xl: 0 20px 45px rgba(0,0,0,.45);
+    --gold-glow: 0 0 18px rgba(212,175,55,.25);
+
+    --radius-xs: .4rem;
+    --radius-sm: .6rem;
+    --radius-md: .9rem;
+    --radius-lg: 1.2rem;
+    --radius-xl: 1.8rem;
+    --radius-round: 999px;
+
+    --font-primary: "Poppins", sans-serif;
+    --font-logo: "Cinzel", serif;
+
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+    --fw-extra-bold: 800;
+
+    --navbar-height: 80px;
+    --container-padding: 1.5rem;
+
+    --transition-fast: .2s ease;
+    --transition: .3s ease;
+    --transition-slow: .45s ease;
+
+    --z-navbar: 100;
+    --z-dropdown: 200;
+    --z-modal: 500;
+    --z-toast: 1000;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-primary);
+}
+html{
+    font-size: 16px;
+}
+body{
+    background: red;
+}
+.container{
+    width: min(90%, 1200px);
+    margin: 0 auto;
+}
+.navbar-wrapper{
+    background-color: var(--navbar-bg);
+}
+.navbar{
+    height: var(--navbar-height);
+    z-index: var(--z-navbar);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(12px);
+    max-width: 1300px;
+    padding: 0 2rem;
+    margin: 0 auto;
+}
+.logo{
+    font-family: var(--font-logo);
+    color: var(--primary);
+    font-size: 2.5rem;
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+.logo-icon{
+    height: 2.5rem;
+    width: 2.5rem;
+}
+.nav-list{
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+}
+.nav-list-item{
+    height: 100%;
+}
+.nav-button{
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    padding: 0 2rem;
+    height: 100%;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition)
+}
+.nav-button:hover{
+    color: var(--text-primary);
+    background-color: var(--surface-light);
+}
+.nav-button:active{
+    transform: scale(0.95);
+}
