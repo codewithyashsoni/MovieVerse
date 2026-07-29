@@ -1,5 +1,6 @@
-import React, {useState} from "react"
 import MovieGrid from "../components/MovieGrid.jsx"
+import EmptyState from "../components/EmptyState.jsx"
+import {HeartOff} from "lucide-react"
 
 function Favourites({favourites, toggleFavourite, handleMovieClick}){
     console.log(favourites)
@@ -11,7 +12,13 @@ function Favourites({favourites, toggleFavourite, handleMovieClick}){
                     favourites={favourites} handleMovieClick={handleMovieClick}
                 />)
                 :
-                (<div>empty div</div>)
+                (
+                    <EmptyState
+                        icon={HeartOff}
+                        title="No favourites yet"
+                        message="Add movies to your favourites by clicking the heart icon"
+                    />
+                )
             }
         </div>
     )

@@ -7,12 +7,18 @@ import MovieDetails from "./pages/MovieDetails.jsx"
 
 function App() {
   const [phase, setPhase] = useState("home");
-  const [previousPhase, setPreviousPhase] = useState("");
+  const [previousPhase, setPreviousPhase] = useState("home");
   const [query, setQuery] = useState("");
   const [data, setData] = useState("")
   const [loading, setLoading]= useState(false);
   const [error, setError] = useState("");
-  const [favourites, setFavourites] = useState([]);
+  const [favourites, setFavourites] = useState(() => {
+    const savedFavourites = localStorage.getItem("favourites");
+    if(savedFavourites){
+      return JSON.parse(savedFavourites);
+    }
+    return [];
+  });
   const [movieDetails, setMovieDetails] = useState("");
 
   const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
@@ -23,32 +29,37 @@ function App() {
     fetchData(query);
   }, [query]);
 
+  useEffect(() => {
+      localStorage.setItem("favourites", JSON.stringify(favourites));
+  }, [favourites])
+
   async function fetchData(name){
     setLoading(true);
+    setError("")
     try{
       const response = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${name}`);
       const data = await response.json();
-      if(!response.ok){
-        throw new Error(
-          data.message ?
-          data.message.charAt(0).toUpperCase() + data.message.slice(1) :
-          "No Movies found" 
-        )
+      if(data.Response === "False"){
+        setError(data.Error);
+        setData(null);
+        return;
       }
       console.log(data);
+      setError("");
       setData(data);
       setQuery("");
     }catch(error){
-      console.error(error.message);
-      setError("No such movies or shows found")
+      console.error(error);
+      setError("Something went wrong. Please try again.")
     }finally{
       setLoading(false);
     }
   }
 
   function toggleFavourite(movie){
-    if(favourites.includes(movie)){
-      setFavourites(f => f.filter((currMovie) => currMovie !== movie))
+    const exists = favourites.some(fav => fav.imdbID === movie.imdbID);
+    if(exists){
+      setFavourites(f => f.filter((currMovie) => currMovie.imdbID !== movie.imdbID))
     }else{
       setFavourites(f => [...f, movie]);
     }
@@ -62,15 +73,14 @@ function App() {
 
   async function fetchMovieDetails(movieID){
     setLoading(true);
+    setError("")
     try{
       const response = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&i=${movieID}`);
       const detailData = await response.json();
-      if(!response.ok){
-        throw new Error(
-          detailData.message ?
-          detailData.message.charAt(0).toUpperCase() + detailData.message.slice(1) :
-          "Can't fetch extra detail about the movie" 
-        )
+      if(detailData.Response === "False"){
+        setError(detailData.Error);
+        setMovieDetails(null);
+        return;
       }
       console.log("detail data", detailData);
       setMovieDetails(detailData);
@@ -91,7 +101,7 @@ function App() {
       {phase === "home" && 
         <Home setQuery={setQuery} data={data} toggleFavourite={toggleFavourite} 
           favourites={favourites} handleMovieClick={handleMovieClick}
-          loading={loading}
+          loading={loading} error={error}
         />
       }
       {phase === "favourite" &&

@@ -53,8 +53,8 @@ function MovieCard({movie, toggleFavourite, favourites, handleMovieClick}){
                 >
                     <Heart 
                         className="favourite-icon"
-                        fill={isFavourite ? "var(--danger)": "none"}
-                        color={isFavourite ? "var(--danger)": "var(--btn-secondary-text)"}
+                        fill={isFavourite ? "var(--favorite)": "none"}
+                        color={isFavourite ? "var(--favorite)": "var(--btn-secondary-text)"}
                     />
                 </button>
                 

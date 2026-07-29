@@ -20,7 +20,7 @@ function MovieDetails({movieDetails, previousPhase, setPhase, loading}){
                     >⬅ Back to Results</button>
 
 
-                    <div className="movie-details-container" style={{color: "white"}}>
+                    <div className="movie-details-container">
                         <div className="detail-first-div">
                             {!imageError && Poster !== "N/A" ?
                                 (

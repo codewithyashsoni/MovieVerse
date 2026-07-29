@@ -19,7 +19,8 @@ function SearchBar({setQuery}){
 
     function sendQuery(i){
         if(!i.trim()) return;
-        setQuery(input);
+        setQuery(i);
+        setInput("");
     }
 
     return(

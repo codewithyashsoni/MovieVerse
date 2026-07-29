@@ -240,7 +240,7 @@ body{
 }
 .search-button:hover{
     background: var(--btn-hover);
-    transform: translateY(-4px);
+    transform: translateY(-2px);
 }
 .search-button:active{
     transform: scale(.95);
@@ -298,7 +298,6 @@ body{
     background-color: var(--movie-card-hover);
     border: 1px solid var(--border-focus);
     transform: scale(1.03)
-
 }
 .card-poster{
     width :100%;
@@ -346,7 +345,7 @@ body{
     transition: var(--transition);
 }
 .favourite-button:hover{
-    color: var(--danger);
+    color: var(--favorite-hover);
 }
 .favourite-icon{
     height: 2rem;
@@ -387,8 +386,10 @@ body{
 .movie-poster{
     border-radius: var(--radius-md);
 }
-.detail-first-div.no-poster{
+.detail-first-div .no-poster{
     border-radius: var(--radius-md);
+    width: 25rem;
+    background-color: var(--bg-secondary);
 }
 .movie-info h1{
     color: var(--text-gold);
@@ -428,10 +429,25 @@ body{
         transform: rotate(360deg);
     }
 }
-
 .loader-container {
-    min-height: calc(100vh - 16.3rem); /* adjust 16rem to match your navbar + search + filter height */
+    min-height: calc(100vh - var(--navbar-height) - 11.3rem);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.empty-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - var(--navbar-height) - 11.3rem);
+    color: var(--text-muted);
+}
+.empty-icon{
+    height: 5rem;
+    width: 5rem;
+    margin-bottom: 1.5rem;
+}
+.empty-container p{
+    margin-top: .5rem;
 }

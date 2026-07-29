@@ -3,8 +3,10 @@ import SearchBar from "../components/SearchBar.jsx"
 import FilterSortBar from "../components/FilterSortBar.jsx"
 import MovieGrid from "../components/MovieGrid.jsx"
 import Loader from "../components/Loader.jsx"
+import EmptyState from "../components/EmptyState.jsx"
+import {Film, SearchX} from "lucide-react"
 
-function Home({setQuery, data, toggleFavourite, favourites, handleMovieClick, loading}){
+function Home({setQuery, data, toggleFavourite, favourites, handleMovieClick, loading, error}){
     const [filter, setFilter] = useState('all');
     const [sort, setSort] = useState("newest first");
 
@@ -45,11 +47,24 @@ function Home({setQuery, data, toggleFavourite, favourites, handleMovieClick, lo
             <FilterSortBar setFilter={setFilter} setSort={setSort} />
             {loading ? (
                 <Loader />
-            ) : (
-                data &&
-                <MovieGrid data={sortedData} toggleFavourite={toggleFavourite}
-                    favourites={favourites} handleMovieClick={handleMovieClick}
+            ) : error ? (
+                <EmptyState
+                    icon={SearchX}
+                    title="No Results Found"
+                    message={error}
                 />
+            ) : (
+                data ? (
+                    <MovieGrid data={sortedData} toggleFavourite={toggleFavourite}
+                        favourites={favourites} handleMovieClick={handleMovieClick}
+                    />
+                ) : (
+                    <EmptyState
+                        icon={Film}
+                        title="Search for Movies & Shows"
+                        message='Try "Inception" , "Breaking Bad" , "Dune"'
+                    />
+                )
                 
             )}
             
