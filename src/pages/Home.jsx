@@ -2,8 +2,9 @@ import React, {useState} from "react"
 import SearchBar from "../components/SearchBar.jsx"
 import FilterSortBar from "../components/FilterSortBar.jsx"
 import MovieGrid from "../components/MovieGrid.jsx"
+import Loader from "../components/Loader.jsx"
 
-function Home({setQuery, data, toggleFavourite, favourites, handleMovieClick}){
+function Home({setQuery, data, toggleFavourite, favourites, handleMovieClick, loading}){
     const [filter, setFilter] = useState('all');
     const [sort, setSort] = useState("newest first");
 
@@ -38,16 +39,20 @@ function Home({setQuery, data, toggleFavourite, favourites, handleMovieClick}){
 
     }
     
-
     return(
         <div className="home-container">
             <SearchBar setQuery={setQuery} />
             <FilterSortBar setFilter={setFilter} setSort={setSort} />
-            {data &&
+            {loading ? (
+                <Loader />
+            ) : (
+                data &&
                 <MovieGrid data={sortedData} toggleFavourite={toggleFavourite}
                     favourites={favourites} handleMovieClick={handleMovieClick}
                 />
-            }
+                
+            )}
+            
         </div>
     )
 }

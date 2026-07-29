@@ -7,7 +7,7 @@ function SearchBar({setQuery}){
         if(input.trim().length < 3) return;
         const timeoutID = setTimeout(() => {
             sendQuery(input)
-        }, 1000)
+        }, 500)
 
         return () => clearTimeout(timeoutID);
     }, [input])
