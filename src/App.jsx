@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Home from "./pages/Home.jsx"
 import NavBar from "./components/NavBar.jsx"
+import Favourites from "./pages/Favourites.jsx"
 
 function App() {
   const [phase, setPhase] = useState("home");
@@ -8,6 +9,8 @@ function App() {
   const [data, setData] = useState("")
   const [loading, setLoading]= useState(false);
   const [error, setError] = useState("");
+  const [favourites, setFavourites] = useState([]);
+
   const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
   useEffect(() => {
@@ -39,13 +42,30 @@ function App() {
     }
   }
 
+  function toggleFavourite(movie){
+    if(favourites.includes(movie)){
+      setFavourites(f => f.filter((currMovie) => currMovie !== movie))
+    }else{
+      setFavourites(f => [...f, movie]);
+    }
+  }
+
+  function handleMovieClick(movieID){
+
+  }
+
   return (
     <>
     <NavBar setPhase={setPhase} />
 
     <div className="container">
       {phase === "home" && 
-        <Home setQuery={setQuery} data={data}/>
+        <Home setQuery={setQuery} data={data} toggleFavourite={toggleFavourite} 
+          favourites={favourites} handleMovieClick={handleMovieClick}
+        />
+      }
+      {phase === "favourite" &&
+        <Favourites favourites={favourites} toggleFavourite={toggleFavourite} handleMovieClick={handleMovieClick} />
       }
     </div></>
     

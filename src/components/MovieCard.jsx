@@ -1,6 +1,13 @@
-import {Heart} from "lucide-react"
+import {useState} from "react"
+import {Heart, Film} from "lucide-react"
 
-function MovieCard({movie}){
+function MovieCard({movie, toggleFavourite, favourites, handleMovieClick}){
+    const [imageError, setImageError] = useState(false);
+
+    const isFavourite = favourites.some(
+        (fav) => fav.imdbID === movie.imdbID
+    )
+
     const type= movie.Type.charAt(0).toUpperCase() + movie.Type.slice(1);
 
     return(
@@ -14,9 +21,20 @@ function MovieCard({movie}){
                 handleMovieClick(movie.imdbID);
             }
         }}
-        >
-            <img className="card-poster" src={movie.Poster} alt={`${movie.Title} poster`} />
-
+        >   
+            {!imageError && movie.Poster !== "N/A" ? 
+                <img className="card-poster"
+                src={movie.Poster} 
+                alt={`${movie.Title} poster`}
+                onError={() => setImageError(true)} 
+                /> 
+                : 
+                <div className="no-poster">
+                    <Film size={42}/>
+                    <span>No Poster Available</span>
+                </div>
+            }
+            
             <h3 className="card-title">{movie.Title}</h3>
 
             <div className="card-inner-container">
@@ -33,7 +51,11 @@ function MovieCard({movie}){
                         toggleFavourite(movie);
                     }}
                 >
-                    <Heart className="favourite-icon" />
+                    <Heart 
+                        className="favourite-icon"
+                        fill={isFavourite ? "var(--danger)": "none"}
+                        color={isFavourite ? "var(--danger)": "var(--btn-secondary-text)"}
+                    />
                 </button>
                 
             </div>
