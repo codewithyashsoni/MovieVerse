@@ -24,10 +24,8 @@ function NavBar({setPhase}){
                         >Favourites</button>
                     </li>
                 </ul>
-
             </nav>
-        </div>
-        
+        </div>    
     )
 }
 export default NavBar

@@ -109,16 +109,12 @@
     --fw-extra-bold: 800;
 
     --navbar-height: 5rem;
-    --container-padding: 1.5rem;
 
     --transition-fast: .2s ease;
     --transition: .3s ease;
     --transition-slow: .45s ease;
 
     --z-navbar: 100;
-    --z-dropdown: 200;
-    --z-modal: 500;
-    --z-toast: 1000;
 }
 *{
     margin: 0;
@@ -263,7 +259,7 @@ body{
     font-size: 1.1rem;
 }
 .select-container{
-    background-color: var(--dropdown-bg);
+    background: var(--dropdown-bg);
     color: var(--text-gold);
     padding: .4rem .8rem;
     cursor: pointer;
@@ -274,7 +270,7 @@ body{
     outline: none;
 }
 .select-container:hover{
-    background-color: var(--dropdown-hover);
+    background: var(--dropdown-hover);
     transform: scale(1.03);
 }
 .movie-grid-container{
@@ -405,6 +401,9 @@ body{
     font-size: 1.2rem;
     padding: .2rem 0 ;
 }
+.rating{
+    color: var(--rating);
+}
 .detail-second-div{
     padding: 1rem 0;
     border-top: 1px solid var(--border-light);
@@ -454,6 +453,19 @@ body{
 }
 .empty-container p{
     margin-top: .5rem;
+}
+::-webkit-scrollbar{
+    width :10px;
+}
+::-webkit-scrollbar-track{
+    background: var(--scroll-track);
+}
+::-webkit-scrollbar-thumb{
+    background: var(--scroll-thumb);
+    border-radius: var(--radius-round);
+}
+::-webkit-scrollbar-thumb:hover{
+    background: var(--scroll-thumb-hover);
 }
 @media (max-width: 1024px){
     html{

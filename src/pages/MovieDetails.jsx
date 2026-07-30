@@ -51,7 +51,7 @@ function MovieDetails({movieDetails, previousPhase, setPhase, loading}){
                                 </p>
 
                                 {imdbRating !== "N/A" &&
-                                    <p>Rating: {imdbRating}/10</p>}
+                                    <p>Rating: <span className="rating">{imdbRating}/10</span></p>}
 
                                 
                                 {Language !== "N/A" && Country !== "N/A" &&
@@ -61,7 +61,6 @@ function MovieDetails({movieDetails, previousPhase, setPhase, loading}){
                                     </p>
                                 }
                                 
-
                                 <p>Rated: {Rated !== "N/A" ? Rated : "Not Available"}</p>
 
                             </div>
@@ -87,9 +86,9 @@ function MovieDetails({movieDetails, previousPhase, setPhase, loading}){
                         </div>
                         
                     </div>
-                        </>
-                    )}
-            
+                </>
+                )
+            }    
         </div>
     )
 }

@@ -9,7 +9,6 @@ function MovieGrid({data, toggleFavourite, favourites, handleMovieClick}){
                 />
             ))}
         </div>
-        
     )
 }
 export default MovieGrid

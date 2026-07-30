@@ -45,31 +45,28 @@ function Home({setQuery, data, toggleFavourite, favourites, handleMovieClick, lo
         <div className="home-container">
             <SearchBar setQuery={setQuery} />
             <FilterSortBar setFilter={setFilter} setSort={setSort} />
-            <div className="home-content">
-                {loading ? (
-                    <Loader />
-                ) : error ? (
-                    <EmptyState
-                        icon={SearchX}
-                        title="No Results Found"
-                        message={error}
+            {loading ? (
+                <Loader />
+            ) : error ? (
+                <EmptyState
+                    icon={SearchX}
+                    title="No Results Found"
+                    message={error}
+                />
+            ) : (
+                data ? (
+                    <MovieGrid data={sortedData} toggleFavourite={toggleFavourite}
+                        favourites={favourites} handleMovieClick={handleMovieClick}
                     />
                 ) : (
-                    data ? (
-                        <MovieGrid data={sortedData} toggleFavourite={toggleFavourite}
-                            favourites={favourites} handleMovieClick={handleMovieClick}
-                        />
-                    ) : (
-                        <EmptyState
-                            icon={Film}
-                            title="Search for Movies & Shows"
-                            message='Try "Inception" , "Breaking Bad" , "Dune"'
-                        />
-                    )
-                    
-                )}
-            </div>
-            
+                    <EmptyState
+                        icon={Film}
+                        title="Search for Movies & Shows"
+                        message='Try "Inception" , "Breaking Bad" , "Dune"'
+                    />
+                )
+                
+            )} 
         </div>
     )
 }

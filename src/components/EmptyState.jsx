@@ -1,5 +1,3 @@
-
-
 function EmptyState({icon : Icon, title, message}){
     return(
         <div className="empty-container">
