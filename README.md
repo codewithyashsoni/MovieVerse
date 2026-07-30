@@ -8,7 +8,7 @@ Designed with a modern dark cinematic UI, MovieVerse focuses on providing a smoo
 
 ## 🌐 Live Demo
 
-**Live Website:** *(link here)*
+**Live Website:** https://movie-verse-yash.vercel.app/
 
 ---
 
