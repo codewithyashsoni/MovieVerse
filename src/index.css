@@ -127,6 +127,7 @@ html{
 }
 body{
     background: var(--bg);
+    min-height: 100vh;
 }
 .container{
     width: min(90%, 1200px);
